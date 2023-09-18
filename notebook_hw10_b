@@ -4,15 +4,15 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# notebook_hw10\n",
-    "The goal of this notebook is to calculaate values from Homework 9."
+    "# Notebook_template\n",
+    "The goal of this notebook is to demonstrate Jupyter notebooks."
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "We begin by installing and importing the necessary python libraries"
+    "Begin by installing and importing the necessary python libraries"
    ]
   },
   {
@@ -21,7 +21,13 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "import sys\n",
     "import numpy as np\n",
+    "from ipywidgets import interact, interactive\n",
+    "import ipywidgets as widgets\n",
+    "\n",
+    "!{sys.executable} -m pip install --quiet matplotlib\n",
+    "\n",
     "import matplotlib.pyplot as plt"
    ]
   },
@@ -29,7 +35,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Now we define some routines for the notebook by creating an array and a variable."
+    "Define some routines for the notebook.  Create an array."
    ]
   },
   {
@@ -38,21 +44,19 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "tau_star = np.linspace(10,0)\n",
-    "epsilon = 0.3\n",
-    "tau = tau_star / np.sqrt(3. * epsilon)"
+    "x = np.linspace(0, 1)"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Now ploting."
+    "Now plot a line with variable slope."
    ]
   },
-  {
+     {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -72,25 +76,15 @@
     {
      "data": {
       "text/plain": [
-       "<output plots>"
+       "<output plot>"
       ]
      },
-     "execution_count": 3,
+     "execution_count": 4,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
-    "plt.plot(tau, 1. - ((1. - np.sqrt(epsilon))/(1. + np.sqrt(epsilon)))*np.exp(-tau),\n",
-    "label = '$I^{(+)}/B$')\n",
-    "plt.plot(tau, 1. - np.exp(-tau), label = '$I^{(-)}/B$')\n",
-    "plt.xlim([10,0])\n",
-    "plt.ylim([0,1])\n",
-    "plt.xlabel('$\\tau$')\n",
-    "plt.legend()\n",
-    "title_str = '$epsilon$ = ' + str(epsilon)\n",
-    "plt.title(title_str)\n",
-    "\n",
     "plt.plot(tau , 1. - (1. - np.sqrt(epsilon))*np.exp(-tau), label = 'S/B')\n",
     "plt.plot(tau, 1. - 1. / (1. + np.sqrt(epsilon))*np.exp(-tau), label = 'J/B')\n",
     "plt.plot(tau, (1./np.sqrt(3.)) * (np.sqrt(epsilon)/(1.+np.sqrt(epsilon)))*np.exp(-tau),\n",
